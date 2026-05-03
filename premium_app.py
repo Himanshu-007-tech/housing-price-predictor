@@ -851,22 +851,14 @@ class PremiumHandler(BaseHTTPRequestHandler):
     
     def log_message(self, format, *args):
         print(f"[{datetime.now().strftime('%H:%M:%S')}] {args[0]}")
-
 if __name__ == '__main__':
     print("=" * 60)
     print("🌟 PREMIUM HOUSING PRICE PREDICTOR")
     print("=" * 60)
-    print("🚀 Starting server at: http://localhost:8888")
-    print("📱 Features:")
-    print("   • Single Property Prediction")
-    print("   • Batch CSV Processing")
-    print("   • Prediction History")
-    print("   • Market Insights Dashboard")
-    print("   • Dark/Light Theme Toggle")
-    print("   • Export Results to CSV")
-    print("=" * 60)
-    print("❌ Press Ctrl+C to stop")
-    print("=" * 60)
-    
-    server = HTTPServer(('localhost', 8888), PremiumHandler)
+
+    port = int(os.environ.get("PORT", 8888))
+
+    print(f"🚀 Starting server on port: {port}")
+
+    server = HTTPServer(('0.0.0.0', port), PremiumHandler)
     server.serve_forever()
